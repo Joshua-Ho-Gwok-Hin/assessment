@@ -23,3 +23,16 @@ spring:
               args:
                 name: Wallet-service
                 fallbackUri: forward:/walletFallBack
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+
+hystrix:
+  command:
+    fallbackCmd:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
